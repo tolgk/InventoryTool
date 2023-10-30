@@ -1,0 +1,243 @@
+﻿@page 
+@using RegistrySystem.Pages.Forms;
+@model ApplicationModel
+@{
+}
+<div class="bg-light text-light" style="height:90vh;">
+    <div class="container">
+        <div class="header_wrap" style="padding-top:5px;padding-bottom:0 !important">
+            <div class="num_rows">
+                <div class="form-group">
+                    <select class="form-control" name="state" id="maxRows">
+                        <option value="10">10</option>
+                        <option value="5">5</option>
+                        <option value="3">3</option>
+                    </select>
+
+                </div>
+            </div>
+            <div class="tb_search">
+                <input type="text" id="search_input_all" onkeyup="FilterkeyWord_all_table()" placeholder="Search Application" class="form-control">
+            </div>
+            <div class="d-flex justify-content-end" style="padding-right:20px;">
+                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#updateModal">Add New App</button>
+            </div>
+        </div>
+        <table class="table table-striped table-responsive" id="table-id">
+            <thead>
+                <tr>
+                    <th class="text-black">Application Name</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var apps in Model.AppModel.Applications)
+                {
+                    <tr>
+                        <td>@apps.Name</td>
+                        <td>
+                            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal_@apps.Id">
+                                Edit
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
+                                    <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z" />
+                                </svg>
+                            </button>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-outline-warning text-black" data-bs-toggle="modal" data-bs-target="#addNewModal_@apps.Id">
+                                Add New Module
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
+                                    <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z" />
+                                </svg>
+                            </button>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-outline-danger">
+                                Delete <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z" />
+                                    <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z" />
+                                </svg>
+                            </button>
+                        </td>
+
+                    </tr>
+                }
+
+            <tbody>
+        </table>
+        <div class='pagination-container'>
+            <nav>
+                <ul class="pagination">
+                </ul>
+            </nav>
+        </div>
+        <div class="rows_count"></div>
+        @foreach (var apps in Model.AppModel.Applications)
+        {
+            <div class="modal fade" id="exampleModal_@apps.Id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-scrollable modal-fullscreen-sm-down modal-fullscreen">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5  text-black" id="exampleModalLabel">Edit</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form method="post" asp-page-handler="UpdateApp">
+                                <div class="mb-3 text-black">
+                                    <label for="" class="form-label">ID</label>
+                                    <input type="hidden" class="form-control invisible" value="@apps.Id" name="Id">
+                                </div>
+                                <div class="mb-3 text-black">
+                                    <label for="" class="form-label">Name</label>
+                                    <input type="text" class="form-control" id="" value="@apps.Name" name="Name">
+                                </div>
+                                <div class="mb-3 text-black">
+                                    <label for="" class="form-label">Description</label>
+                                    <textarea class="form-control" id=""name="Description">@apps.Description</textarea>
+                                </div>
+                                <div class="modal-footer ">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-success">Save changes</button>
+                                </div>
+                            </form>
+                                <div class="mb-3 text-black">
+                                    <label for="" class="form-label h2">Modules</label>
+                                </div>
+
+                                <table class="table table-striped table-responsive" id="">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-black">Module Name</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    @{
+                                        var submodules =  Model.AppModel.Modules.Where(p=> p.AppId == apps.Id);
+                                        foreach(var submodul in submodules )
+                                        {
+                                            <tr>
+                                                <td>@submodul.Name</td>
+                                                <td>
+                                                    <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#EditModuleModal_@apps.Id@submodul.Id">
+                                                        Edit
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
+                                                            <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z" />
+                                                        </svg>
+                                                    </button>
+                                                </td>
+                                                <td>
+                                                    <button type="button" class="btn btn-outline-danger">
+                                                        Delete <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z" />
+                                                            <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z" />
+                                                        </svg>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+                                    <tbody>
+                                </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @foreach (var submodule in submodules)
+            {
+                <div class="modal fade" id="EditModuleModal_@apps.Id@submodule.Id" tabindex="-1" aria-labelledby="addNewModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-scrollable">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5 text-black" id="addNewModalLabel">Edit Module</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form method="post" asp-page-handler="EditSubModule">
+                                    <input type="hidden" class="invisible" value="@submodule.Id" name="SubModuleId" />
+                                    <div class="mb-3 text-black">
+                                        <label for="" class="form-label">Name</label>
+                                        <input type="text" class="form-control" id="" value="@submodule.Name" name="ModuleName">
+                                    </div><div class="mb-3 text-black">
+                                        <label for="" class="form-label">Path</label>
+                                        <input type="text" class="form-control" id="" value="@submodule.Path" name="SubModulePath">
+                                    </div>
+                                    <div class="mb-3 text-black">
+                                        <label for="" class="form-label">Description</label>
+                                        <textarea class="form-control" id="" name="ModuleDescription">@submodule.Description</textarea>
+                                    </div>
+                                    <div class="modal-footer ">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-success">Save</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            } 
+        }
+
+        
+        @foreach (var apps in Model.AppModel.Applications)
+        {
+            <div class="modal fade" id="addNewModal_@apps.Id" tabindex="-1" aria-labelledby="addNewModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-scrollable">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5 text-black" id="addNewModalLabel">New Module</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form method="post" asp-page-handler="AddNewModule">
+                                <input type="hidden" class="invisible" value="@apps.Id" name="Id" />
+                                <div class="mb-3 text-black">
+                                    <label for="" class="form-label">Name</label>
+                                    <input type="text" class="form-control" id="" name="ModuleName">
+                                </div><div class="mb-3 text-black">
+                                    <label for="" class="form-label">Path</label>
+                                    <input type="text" class="form-control" id="" name="SubModulePath">
+                                </div>
+                                <div class="mb-3 text-black">
+                                    <label for="" class="form-label">Description</label>
+                                    <textarea class="form-control" id="" name="ModuleDescription"></textarea>
+                                </div>
+                                <div class="modal-footer ">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-success">Add</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        
+
+        <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5 text-black" id="updateModalLabel">Add New App</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="post" asp-page-handler="AddApp">
+                            <div class="mb-3 text-black">
+                                <label for="" class="form-label">Name</label>
+                                <input type="text" class="form-control" id="" name="Name">
+                            </div>
+                            <div class="mb-3 text-black">
+                                <label for="" class="form-label">Description</label>
+                                <textarea class="form-control" id="" name="Description"></textarea>
+                            </div>
+                            <div class="modal-footer ">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-success">Add</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

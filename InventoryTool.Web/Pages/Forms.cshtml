@@ -1,0 +1,58 @@
+﻿@page
+
+@{
+    ViewData["Title"] = "Registry System";
+}
+
+<div class="text-center bg-black text-light" style="height:90vh;">
+    <div class="container d-flex justify-content-center" style="height:90vh;">
+        <div class="row pt-5">
+
+            <div class="col-sm-3">
+                <a asp-page="Forms/Application" class="btn klkt">
+                    <p class="txt-klkt">Application</p>
+                </a>
+            </div>
+
+            <div class="col-sm-3">
+                <a asp-page="Forms/Process" class="btn klkt">
+                    <p class="txt-klkt">Process</p>
+                </a>
+            </div>
+
+            <div class="col-sm-3">
+                <a asp-page="Forms/Phaze" class="btn klkt">
+                    <p class="txt-klkt">Phaze</p>
+                </a>
+            </div>
+            <div class="col-sm-3">
+                <a asp-page="Forms/Department" class="btn klkt">
+                    <p class="txt-klkt">Department</p>
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<style>
+    .klkt {
+        height: 150px;
+        width: 150px;
+        background-color: #2e6930;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+    }
+
+        .klkt:hover {
+            background-color: #1e4620;
+        }
+
+    .txt-klkt {
+        color: whitesmoke;
+        margin-bottom: 0;
+        font-size: 20px;
+    }
+</style>

@@ -1,0 +1,67 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34031.279
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{5A317956-6BAE-4CD1-B62D-0AB5274CA827}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{27E05433-F59C-44A0-B57D-F6CDCB1493F2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{7565FBF7-F3E6-46E4-B6AD-56611052930A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{2767356B-84BA-4D91-8C18-3BA5B37459E1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InventoryTool.Application", "InventoryTool.Application\InventoryTool.Application.csproj", "{39993733-217C-4C2B-856A-C4A2B861E41D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InventoryTool.Domain", "InventoryTool.Domain\InventoryTool.Domain.csproj", "{C5790BBB-7203-446A-A882-B587ED75BCA7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InventoryTool.Infrastructure", "InventoryTool.Infrastructure\InventoryTool.Infrastructure.csproj", "{C581E07A-418D-4DFB-A79D-44FB67ED2B17}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InventoryTool.Persistence", "InventoryTool.Persistence\InventoryTool.Persistence.csproj", "{74308C65-E4BD-495C-8528-BED2920397EA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InventoryTool.Web", "InventoryTool.Web\InventoryTool.Web.csproj", "{FE427738-64BB-42B8-8211-802B4E64F524}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{39993733-217C-4C2B-856A-C4A2B861E41D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39993733-217C-4C2B-856A-C4A2B861E41D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39993733-217C-4C2B-856A-C4A2B861E41D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39993733-217C-4C2B-856A-C4A2B861E41D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5790BBB-7203-446A-A882-B587ED75BCA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5790BBB-7203-446A-A882-B587ED75BCA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5790BBB-7203-446A-A882-B587ED75BCA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5790BBB-7203-446A-A882-B587ED75BCA7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C581E07A-418D-4DFB-A79D-44FB67ED2B17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C581E07A-418D-4DFB-A79D-44FB67ED2B17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C581E07A-418D-4DFB-A79D-44FB67ED2B17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C581E07A-418D-4DFB-A79D-44FB67ED2B17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74308C65-E4BD-495C-8528-BED2920397EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74308C65-E4BD-495C-8528-BED2920397EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74308C65-E4BD-495C-8528-BED2920397EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74308C65-E4BD-495C-8528-BED2920397EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE427738-64BB-42B8-8211-802B4E64F524}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE427738-64BB-42B8-8211-802B4E64F524}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE427738-64BB-42B8-8211-802B4E64F524}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE427738-64BB-42B8-8211-802B4E64F524}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{27E05433-F59C-44A0-B57D-F6CDCB1493F2} = {5A317956-6BAE-4CD1-B62D-0AB5274CA827}
+		{7565FBF7-F3E6-46E4-B6AD-56611052930A} = {5A317956-6BAE-4CD1-B62D-0AB5274CA827}
+		{2767356B-84BA-4D91-8C18-3BA5B37459E1} = {5A317956-6BAE-4CD1-B62D-0AB5274CA827}
+		{39993733-217C-4C2B-856A-C4A2B861E41D} = {27E05433-F59C-44A0-B57D-F6CDCB1493F2}
+		{C5790BBB-7203-446A-A882-B587ED75BCA7} = {27E05433-F59C-44A0-B57D-F6CDCB1493F2}
+		{C581E07A-418D-4DFB-A79D-44FB67ED2B17} = {7565FBF7-F3E6-46E4-B6AD-56611052930A}
+		{74308C65-E4BD-495C-8528-BED2920397EA} = {7565FBF7-F3E6-46E4-B6AD-56611052930A}
+		{FE427738-64BB-42B8-8211-802B4E64F524} = {2767356B-84BA-4D91-8C18-3BA5B37459E1}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {42661747-85E0-435C-B06D-C83DCE6E4CA7}
+	EndGlobalSection
+EndGlobal
